@@ -7,11 +7,19 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+  
     public function index()
     {
         $users = User::with('country')->get();
         $countries = Country::all();
         return view('users.index', compact('users', 'countries'));
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id); 
+        return view('users.show', compact('user'));
     }
 
     public function create()

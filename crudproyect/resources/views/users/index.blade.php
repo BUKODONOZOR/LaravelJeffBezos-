@@ -1,4 +1,4 @@
-<!-- resources/views/users/index.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
@@ -26,7 +26,13 @@
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->country->name }}</td>
                     <td>
+                        <!-- Button to show user details -->
+                        <a href="{{ route('users.show', $user) }}" class="btn btn-info">View</a>
+
+                        <!-- Edit button -->
                         <a href="{{ route('users.edit', $user) }}" class="btn btn-warning">Edit</a>
+
+                        <!-- Delete form -->
                         <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
