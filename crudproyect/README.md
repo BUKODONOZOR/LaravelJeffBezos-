@@ -49,18 +49,28 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[byte5](https://byte5.de)**
 - **[OP.GG](https://op.gg)**
 
-## Contributing
+Decisiones técnicas :  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Creación de modelos: 
 
-## Code of Conduct
+He creado 2 modelos , el primero es el modelo users que contiene los datos personales del usuario nombres , apellidos, email, gender, address  y country (clave foranea que apunta al id de country)  , el segundo es el modelo countries que contiene id y el  el nombre del país 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+Controlador de Usuarios :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+En el controlador de usuarios recae toda la lógica  de la aplicación que está dividida en métodos : 
 
-## License
+Index() : donde utilizó un Eager Loading para recuperar los datos de las entidades en una misma consulta y el método compat para asociar a un array users y countries 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+show(): donde utilizó El método findOrFail de eloquent para reclutar mediante la url el usuario que tenga un id que coincida con el dado en la ruta 
+
+stored(): donde $request validation para verificar que los datos enviados son los correctos
+
+En las vistas Utilice Boostrap
+
+Consideraciones importantes : 
+
+Realizar la migracions de countries primero que la de users  , de lo contrario generará un error por falta de la correcta definición de la clave foránea cuentry_id   
+
+
+
